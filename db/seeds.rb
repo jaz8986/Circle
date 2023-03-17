@@ -8,7 +8,10 @@
 
 User.destroy_all
 Follower.destroy_all
+Post.destroy_all
+Comment.destroy_all
 
+puts "users are being created"
 sally = User.create(
     profile_img: "myjpg.jpg",
     username: "sally",
@@ -49,6 +52,7 @@ jane = User.create(
     location: "Sactown"
 )
 
+puts "users are following other users" 
 Follower.create(followee: bob, follower: sally)
 Follower.create(followee: bob, follower: john)
 Follower.create(followee: bob, follower: jane)
@@ -64,5 +68,47 @@ Follower.create(followee: john, follower: bob)
 Follower.create(followee: jane, follower: sally)
 Follower.create(followee: jane, follower: john)
 Follower.create(followee: jane, follower: bob)
+
+puts "creating posts"
+20.times do
+    Post.create(
+        img: "myjpg.jpg",
+        user_id: jane.id,
+        description: "hello"
+    )
+end
+
+20.times do
+    Post.create(
+        img: "myjpg.jpg",
+        user_id: john.id,
+        description: "hello"
+    )
+end
+
+20.times do
+    Post.create(
+        img: "myjpg.jpg",
+        user_id: sally.id,
+        description: "hello"
+    )
+end
+
+20.times do
+    Post.create(
+        img: "myjpg.jpg",
+        user_id: bob.id,
+        description: "hello"
+    )
+end
+
+puts "creating comments...."
+100.times do
+    Comment.create(
+        post_id: Post.all.sample.id,
+        user_id: User.all.sample.id,
+        description: "cooooool"
+    )
+end
 
 puts "seeding done"
