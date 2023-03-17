@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id 
             render json: user, status: 200
         else
-            render json: {error: "Invalid Credentials"}, status: 401
+            render json: {error: "Username or password is incorrect"}, status: 401
             # byebug
         end
     end
