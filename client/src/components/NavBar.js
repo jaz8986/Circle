@@ -38,7 +38,7 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
                 <h4>Feed</h4>
             </Link>
 
-            <Link>
+            <Link to='/posts/new'>
                 <h4>Create A Post +</h4>
             </Link>
 

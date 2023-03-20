@@ -5,9 +5,9 @@ class UsersController < ApplicationController
         render json: @user 
     end
 
-    def index # disable this during deployment so it doesn't show all users
-        all_user = User.all
-        render json: all_user, status: :ok
+    def index 
+        user = User.find_by(id: session[:user_id])
+        render json: user, status: :ok
     end
 
     def create

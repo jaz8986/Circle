@@ -72,7 +72,7 @@ Follower.create!(followee: jane, follower: bob)
 puts "creating posts"
 20.times do
     Post.create!(
-        img: "myjpg.jpg",
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
         user_id: jane.id,
         description: "hello"
     )
@@ -80,7 +80,7 @@ end
 
 20.times do
     Post.create!(
-        img: "myjpg.jpg",
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
         user_id: john.id,
         description: "hello"
     )
@@ -88,7 +88,7 @@ end
 
 20.times do
     Post.create!(
-        img: "myjpg.jpg",
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
         user_id: sally.id,
         description: "hello"
     )
@@ -96,7 +96,7 @@ end
 
 20.times do
     Post.create!(
-        img: "myjpg.jpg",
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
         user_id: bob.id,
         description: "hello"
     )
