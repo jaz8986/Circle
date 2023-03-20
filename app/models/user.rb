@@ -2,8 +2,13 @@ class User < ApplicationRecord
     has_secure_password
     has_many :posts
     has_many :comments, through: :posts
+
     has_many :followees, foreign_key: :followee_id, class_name: "Follower"
     has_many :followers, through: :followees
+
+    # has_many :followers, foreign_key: :follower_id, class_name: "Follower"
+    # has_many :followees, through: :followers
+    # followers doesn't work unless this is commented out
 
     validates :username, :password, :name, presence: true
     validates :username, uniqueness: true

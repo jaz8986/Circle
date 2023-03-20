@@ -7,6 +7,7 @@ import Login from './Login'
 import Signup from './Signup'
 import Feed from './Feed'
 import NavBar from './NavBar'
+import CreateAPost from './CreateAPost'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
 
     const [currentUser, setCurrentUser] = useState(null);
     const [showLogin, setShowLogin] = useState(true)
-
+    const [posts, setPosts] = useState([])
     const [ formErrors, setFormErrors ] = useState([])
 
 
@@ -39,6 +40,12 @@ function App() {
           }
           fetchAuthorizedUser()
         }, [])
+
+    useEffect(()=>{
+      fetch('/posts')
+        .then((res)=> res.json())
+        .then(res => setPosts(res))
+    },[])
       
 
 
@@ -64,7 +71,11 @@ if (!currentUser) {
         <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
         <Switch>
           <Route exact path= "/feed">
-              <Feed />
+              <Feed currentUser={currentUser} posts={posts}/>
+          </Route>
+
+          <Route exact path='/posts/new'>
+            <CreateAPost />
           </Route>
         </Switch>
     </div>
