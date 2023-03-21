@@ -45,9 +45,14 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
             <Link>
                 <h4>Locate My Friends</h4>
             </Link>
-            
-            <button  onClick={handleLogOut}>Log Out</button>
 
+            <div>
+                <button onClick={handleLogOut}>Log Out</button>
+            </div>            
+
+            <Link to="/currentuser">
+                <i class='user icon'>{currentUser.name}</i>
+            </Link>
         </nav>
     );
 }
