@@ -9,7 +9,9 @@ export default function Post({user, image, description, id}) {
   return (
     <Card>
       <Card.Content>
-        <Card.Header>@{user}</Card.Header>
+        {/* <Link to='/currentuser'> */}
+          <Card.Header>@{user}</Card.Header>
+        {/* </Link> */}
       </Card.Content>
           <Link to={path} >
             <Image src={image} wrapped ui={true} />

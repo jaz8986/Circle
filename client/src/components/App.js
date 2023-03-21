@@ -108,7 +108,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/currentuser' >
-            <Profile />
+            <Profile currentUser={currentUser}/>
           </Route>
 
         </Switch>
