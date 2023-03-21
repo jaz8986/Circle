@@ -9,6 +9,7 @@ import Feed from './Feed'
 import NavBar from './NavBar'
 import CreateAPost from './CreateAPost'
 import SinglePostView from './SinglePostView'
+import Profile from './Profile'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
     const [posts, setPosts] = useState([])
     const [ formErrors, setFormErrors ] = useState([])
     const [formData, setFormData] = useState(initialData)
+    const [newComment, setNewComment] = useState({ description: ''})
     
   
     const handleLoginSignup = () => {
@@ -68,6 +70,7 @@ function App() {
         setFormData(initialData)
         history.push('/feed')
     }
+
       
 
 
@@ -101,8 +104,13 @@ if (!currentUser) {
           </Route>
 
           <Route path='/posts/:id' >
-            <SinglePostView />
+            <SinglePostView setNewComment={setNewComment} newComment={newComment}  />
           </Route>
+
+          <Route exact path='/currentuser' >
+            <Profile />
+          </Route>
+
         </Switch>
     </div>
   );
