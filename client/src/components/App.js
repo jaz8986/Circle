@@ -8,8 +8,14 @@ import Signup from './Signup'
 import Feed from './Feed'
 import NavBar from './NavBar'
 import CreateAPost from './CreateAPost'
+import SinglePostView from './SinglePostView'
 
 function App() {
+
+    const initialData = {
+      img: '',
+      description: '',
+    }
 
     const history = useHistory()
 
@@ -17,8 +23,9 @@ function App() {
     const [showLogin, setShowLogin] = useState(true)
     const [posts, setPosts] = useState([])
     const [ formErrors, setFormErrors ] = useState([])
-
-
+    const [formData, setFormData] = useState(initialData)
+    
+  
     const handleLoginSignup = () => {
         setShowLogin(currentVal => !currentVal)
       }
@@ -46,6 +53,21 @@ function App() {
         .then((res)=> res.json())
         .then(res => setPosts(res))
     },[])
+
+    function handleFormSubmit(e){
+      e.preventDefault();
+      fetch('/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+              },
+        body: JSON.stringify(formData),
+            })
+        .then((response) => response.json())
+        .then((new_post)=> setPosts([...posts, new_post]));
+        setFormData(initialData)
+        history.push('/feed')
+    }
       
 
 
@@ -75,7 +97,11 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/posts/new'>
-            <CreateAPost />
+            <CreateAPost setFormData={setFormData} formData={formData} currentUser={currentUser} handleFormSubmit={handleFormSubmit} />
+          </Route>
+
+          <Route path='/posts/:id' >
+            <SinglePostView />
           </Route>
         </Switch>
     </div>
