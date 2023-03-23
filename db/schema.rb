@@ -44,9 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_212734) do
     t.string "name"
     t.string "pronouns"
     t.string "bio"
-    t.string "latitude"
-    t.string "longitude"
-    t.boolean "private_location"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

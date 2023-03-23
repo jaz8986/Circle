@@ -19,9 +19,7 @@ sally = User.create!(
     name: "Sally Jones",
     pronouns: "she/her",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
-    private_location: false
+    location: "Sactown"
 )
 
 bob = User.create!(
@@ -31,9 +29,7 @@ bob = User.create!(
     name: "Bob Jones",
     pronouns: "he/him",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
-    private_location: false
+    location: "Sactown"
 )
 
 john = User.create!(
@@ -43,9 +39,7 @@ john = User.create!(
     name: "John Doe",
     pronouns: "he/him",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
-    private_location: false
+    location: "Sactown"
 )
 
 jane = User.create!(
@@ -55,9 +49,7 @@ jane = User.create!(
     name: "Jane Doe",
     pronouns: "she/her",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
-    private_location: false
+    location: "Sactown"
 )
 
 puts "users are following other users" 

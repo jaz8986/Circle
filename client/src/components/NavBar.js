@@ -42,7 +42,7 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
                 <h4>Create A Post +</h4>
             </Link>
 
-            <Link to={'/locate-my-friends'}>
+            <Link>
                 <h4>Locate My Friends</h4>
             </Link>
 
