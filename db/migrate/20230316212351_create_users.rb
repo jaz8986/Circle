@@ -7,7 +7,9 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :pronouns
       t.string :bio
-      t.string :location
+      t.string :latitude
+      t.string :longitude
+      t.boolean :private_location      
 
       t.timestamps
     end

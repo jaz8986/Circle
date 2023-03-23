@@ -15,7 +15,7 @@ export default function Feed({ currentUser, posts }) {
     </div>
   ))
 
-
+  // if (!posts) return <div>loading...</div>
   return (
     <div>
       <Bio currentUser={currentUser} />
