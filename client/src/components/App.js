@@ -10,6 +10,8 @@ import NavBar from './NavBar'
 import CreateAPost from './CreateAPost'
 import SinglePostView from './SinglePostView'
 import Profile from './Profile'
+import LocateMyFriends from './LocateMyFriends'
+import OtherUserProfiles from './OtherUserProfiles'
 
 function App() {
 
@@ -56,6 +58,8 @@ function App() {
         .then(res => setPosts(res))
     },[])
 
+   
+
     function handleFormSubmit(e){
       e.preventDefault();
       fetch('/posts', {
@@ -71,6 +75,7 @@ function App() {
         history.push('/feed')
     }
 
+ 
       
 
 
@@ -91,6 +96,8 @@ if (!currentUser) {
       </div>      
         )}
 
+
+
   return (
     <div>
         <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
@@ -109,6 +116,14 @@ if (!currentUser) {
 
           <Route exact path='/currentuser' >
             <Profile currentUser={currentUser}/>
+          </Route>
+
+          <Route exact path='/locate-my-friends' >
+            <LocateMyFriends currentUser={currentUser} />
+          </Route>
+
+          <Route exact path='/users/:user'>
+            <OtherUserProfiles />
           </Route>
 
         </Switch>
