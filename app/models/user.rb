@@ -3,16 +3,15 @@ class User < ApplicationRecord
     has_many :posts
     has_many :comments, through: :posts
 
-    has_many :followed_users, foreign_key: :follower_id, class_name: "Follower"
-    has_many :followees, through: :followed_users
+    has_many :followees, foreign_key: :followee_id, class_name: "Follower"
+    has_many :followers, through: :followees
 
-    has_many :following_users, foreign_key: :followee_id, class_name: "Follower"
-    has_many :followers, through: :following_users
+    # has_many :followers, foreign_key: :follower_id, class_name: "Follower"
+    # has_many :followees, through: :followers
+    # followers doesn't work unless this is commented out
 
-
+    validates :username, :password, :name, presence: true
     validates :username, uniqueness: true
-    validates :password, length: { minimum: 8, maximum: 20 }, on: :create
+    validates :password, length: { minimum: 8, maximum: 20 }
     validates :bio, length: { maximum: 300 }
-
-
 end
