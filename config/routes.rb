@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # root "articles#index"
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
+  patch '/location', to: 'users#patch_location'
+  get '/users/:id', to: 'users#show'
   #create new user
   post '/signup', to: 'users#create'
   # checking cookie when refreshing to make sure user has signed in

@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom'
 export default function Post({user, image, description, id}) {
 
   const path = `/posts/${id}`
+  const userPath = `/users/${user}`
 
   return (
     <Card>
       <Card.Content>
-        {/* <Link to='/currentuser'> */}
+        <Link to={userPath}>
           <Card.Header>@{user}</Card.Header>
-        {/* </Link> */}
+        </Link>
       </Card.Content>
           <Link to={path} >
             <Image src={image} wrapped ui={true} />
