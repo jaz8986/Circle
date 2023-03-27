@@ -35,14 +35,33 @@ export default function LocateMyFriends({ setCurrentUser, currentUser }) {
         .then(res => setCurrentUser(res))
       });
     }
-    
 
-    const markers = friends.map((f) => <Marker longitude={parseInt(f.longitude)} latitude={parseInt(f.latitude)}><img style={{width: "150px"}} src={f.profile_img} alt='' /></Marker> )
+    function changeViewState(id) {
+      if ( currentUser.id === id ) {
+          setViewState({
+            longitude: currentUser.longitude,
+            latitude: currentUser.latitude,
+            zoom: 15
+          })
+      } else {
+          const friend = friends.find((friend) => friend.id === id)
+          setViewState({
+            longitude: friend.longitude,
+            latitude: friend.latitude,
+            zoom: 15
+          })
+      }
+    }
+    
+    const markers = friends?.map((f) => <Marker longitude={parseInt(f.longitude)} latitude={parseInt(f.latitude)}><img style={{width: "150px"}} src={f.profile_img} alt='' /></Marker> )
    
+    const menuItems = friends.map((f) => (<div onClick={() => changeViewState(f.id)} className='item'>@{f.username}</div>))
+
   return (
     <div>
       <div className='ui vertical menu'>
-        <a className='item'>Item</a>
+        <div onClick={() => changeViewState(currentUser.id)} className='item'>@Me</div>
+        {friends ? menuItems : null}
       </div>
       <MapProvider>
         <Map
@@ -52,7 +71,7 @@ export default function LocateMyFriends({ setCurrentUser, currentUser }) {
           mapStyle="mapbox://styles/mapbox/streets-v9"
           mapboxAccessToken={MAPBOX_TOKEN} >
           {markers}
-          <Marker latitude={currentUser.latitude} longitude={currentUser.longitude}><img src='https://i.fbcd.co/products/original/9847a67d09a39d0ef02f4cacc70490cdbe8cae2a1f7c9a2e5bf23e9a126137ec.jpg' style={{width: "100px"}} /></Marker>
+          <Marker latitude={currentUser.latitude} longitude={currentUser.longitude}><img alt='' src='https://i.fbcd.co/products/original/9847a67d09a39d0ef02f4cacc70490cdbe8cae2a1f7c9a2e5bf23e9a126137ec.jpg' style={{width: "100px"}} /></Marker>
         </Map>
         <button onClick={shareLocation}>Share Your Location With Your Friends?</button>
       </MapProvider>
