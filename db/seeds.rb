@@ -11,52 +11,52 @@ Follower.destroy_all
 Post.destroy_all
 Comment.destroy_all
 
-puts "users are being create!d"
+puts "users are being created"
 sally = User.create!(
-    profile_img: "myjpg.jpg",
+    profile_img: "https://politics.princeton.edu/sites/default/files/styles/square/public/images/p-5.jpeg?h=87dbaab7&itok=ub6jAL5Q",
     username: "sally",
     password: "12345678",
     name: "Sally Jones",
     pronouns: "she/her",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
+    longitude: "-121.3626923",
+    latitude: "38.4511814",
     private_location: false
 )
 
 bob = User.create!(
-    profile_img: "myjpg.jpg",
+    profile_img: "https://assets1.cbsnewsstatic.com/hub/i/2018/11/06/0c1af1b8-155a-458e-b105-78f1e7344bf4/2018-11-06t054310z-1334124005-rc1be15a8050-rtrmadp-3-people-sexiest-man.jpg",
     username: "bob",
     password: "12345678",
     name: "Bob Jones",
     pronouns: "he/him",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
+    longitude: "-122",
+    latitude: "39",
     private_location: false
 )
 
 john = User.create!(
-    profile_img: "myjpg.jpg",
+    profile_img: "https://media.npr.org/assets/img/2022/11/08/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg",
     username: "john",
     password: "12345678",
     name: "John Doe",
     pronouns: "he/him",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
+    longitude: "-123",
+    latitude: "40",
     private_location: false
 )
 
 jane = User.create!(
-    profile_img: "myjpg.jpg",
+    profile_img: "https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/09/27/08/jennifer-lawrence.jpg",
     username: "jane",
     password: "12345678",
     name: "Jane Doe",
     pronouns: "she/her",
     bio: "hello world!",
-    longitude: "5",
-    latitude: "5",
+    longitude: "-124",
+    latitude: "41",
     private_location: false
 )
 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { Card, Image, Comment, Header, Form } from 'semantic-ui-react'
+import { Card, Image, Comment, Header } from 'semantic-ui-react'
 import CommentComp from './CommentComp'
 
 export default function SinglePostView({setNewComment, newComment}) {
@@ -15,12 +15,14 @@ export default function SinglePostView({setNewComment, newComment}) {
         fetch(`/posts/${id}`)
             .then((res)=> res.json())
             .then((data)=> setPost(data))
+            .catch(error => console.error(error));
     },[id])
 
     useEffect(() => {
         fetch(`/comments/${id}`)
             .then((res)=> res.json())
             .then((data)=> setComments(data))
+            .catch(error => console.error(error));
     },[id])
 
     function handleFormChange (e) {
