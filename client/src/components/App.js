@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 
+
 import Login from './Login'
 import Signup from './Signup'
 import Feed from './Feed'
@@ -14,7 +15,6 @@ import LocateMyFriends from './LocateMyFriends'
 import OtherUserProfiles from './OtherUserProfiles'
 
 function App() {
-
     const initialData = {
       img: '',
       description: '',
@@ -39,10 +39,10 @@ function App() {
             try {
               const resp = await fetch("/authorized")
               const data = await resp.json()
-              if(resp.ok){
+              if (resp.ok) {
               setCurrentUser(data)
               history.push('/feed')
-                }else {
+                } else {
                   // setMessage something
               }
             } catch (error) {
@@ -56,6 +56,7 @@ function App() {
       fetch('/posts')
         .then((res)=> res.json())
         .then(res => setPosts(res))
+        .catch(error => console.error(error));
     },[])
 
    
@@ -76,7 +77,6 @@ function App() {
     }
 
  
-      
 
 
 if (!currentUser) { 
@@ -119,7 +119,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/locate-my-friends' >
-            <LocateMyFriends currentUser={currentUser} />
+            <LocateMyFriends setCurrentUser={setCurrentUser} currentUser={currentUser} />
           </Route>
 
           <Route exact path='/users/:user'>

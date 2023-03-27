@@ -14,26 +14,27 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
             history.push('/');
           } else {
             r.json()
-            .then(err => alert(err))
+            .then(err => (err.error))
           }
         });
       }
 
-    if(!currentUser) {
+
+
+    if (!currentUser) {
         return(
             <div>   
 
-                {/* <Link to="/login">
-                    <h1>Login</h1> 
-                </Link> */}
+                <Link to="/">
+                    <h1 style={{textAlign: "center"}}>Login</h1> 
+                </Link>
 
             </div>
         )
-    }
-
+    } else {
 
     return (
-        <nav class='ui menu'>
+        <nav className='ui menu'>
             <Link to='/feed' >
                 <h4>Feed</h4>
             </Link>
@@ -51,10 +52,11 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
             </div>            
 
             <Link to="/currentuser">
-                <i class='user icon'>{currentUser.name}</i>
+                <i className='user icon'>{currentUser.name}</i>
             </Link>
         </nav>
     );
+   }
 }
 
 export default NavBar;

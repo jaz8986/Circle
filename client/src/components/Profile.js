@@ -7,7 +7,7 @@ export default function Profile({currentUser}) {
     
     return (
     <div>
-        <img src={currentUser.profile_img}/>
+        <img src={currentUser.profile_img} alt=''/>
         {currentUser.name}
         {currentUser.pronouns}
         {currentUser.username}

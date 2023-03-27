@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     end
 
     def patch_location
-       # byebug
         user = User.find_by(id: session[:user_id])
         user.update!(user_params)
         render json: user, status: :accepted

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 export default function OtherUserProfiles() {
 
-    const [userData, setUserData] = useState()
+    const [userData, setUserData] = useState([])
 
     let { user } = useParams()
 
@@ -11,9 +11,17 @@ export default function OtherUserProfiles() {
         fetch(`/users/${user}`)
             .then((res)=> res.json())
             .then((data)=> setUserData(data))
+            .catch(error => console.error(error));
     },[user])
 
   return (
-    <div>OtherUserProfiles</div>
+    <div>
+    <img src={userData.profile_img} alt='' />
+    {userData.name}
+    {userData.pronouns}
+    {userData.username}
+    {userData.bio}
+    {/* {mappedProFeed} */}
+</div>
   )
 }
