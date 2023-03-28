@@ -3,5 +3,5 @@ class Post < ApplicationRecord
     has_many :comments
 
     validates :img, :user_id, presence: true
-    validates :description, length: { maximum: 250 }
+    # validates :description, length: { maximum: 250 }
 end

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 
-export default function CreateAPost({ setFormData, formData, currentUser, handleFormSubmit}) {
+export default function CreateAPost({ setFormData, formData, currentUser, handleFormSubmit, errors}) {
 
     const { img, description } = formData
 
@@ -30,7 +30,14 @@ export default function CreateAPost({ setFormData, formData, currentUser, handle
 
             <label>Description</label>
                 <input type="text"  onChange={handleFormChange} value={description} name='description' placeholder=''/>
-            <button type='submit' class='ui button' >Post</button>
+            <button type='submit' className='ui button' >Post</button>
+            {errors.length > 0 && (
+                <div style={{ color: "red" }}>
+                {errors.map((error) => (
+                    <div key={error}>{error}</div>
+                ))}
+                </div>
+            )}
         </form>
     </div>
   )

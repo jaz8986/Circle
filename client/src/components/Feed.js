@@ -13,7 +13,7 @@ export default function Feed({ currentUser, posts }) {
 
   const mappedFollowers = currentUser.followers?.map((follower)=> (
     <div key={follower.id} >
-      <img style={{width: "150px"}} src={follower.profile_img} />
+      <img style={{width: "150px"}} src={follower.profile_img} alt='' />
       {follower.username}
     </div>
   ))
