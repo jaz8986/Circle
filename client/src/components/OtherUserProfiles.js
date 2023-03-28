@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import FollowBtn from './FollowBtn'
 
-export default function OtherUserProfiles({ currentUser }) {
+export default function OtherUserProfiles({ setCurrentUser, currentUser }) {
 
     const [userData, setUserData] = useState([])
 
@@ -19,7 +19,7 @@ export default function OtherUserProfiles({ currentUser }) {
   return (
     <div>
     <img style={{width: "150px"}} src={userData.profile_img} alt='' />
-    <FollowBtn currentUser={currentUser} user={userData} />
+    <FollowBtn setCurrentUser={setCurrentUser} currentUser={currentUser} user={userData} />
     {userData.name}
     {userData.pronouns}
     {userData.username}
