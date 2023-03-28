@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :comments, only: [:index, :show, :create, :destroy]
   resources :posts, only: [:index, :create, :show]
-  resources :followers
+  resources :followers, only: [:create]
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
+  delete '/:id/unfollow', to: 'followers#destroy'
   patch '/location', to: 'users#patch_location'
   get '/users/:id', to: 'users#show'
   #create new user

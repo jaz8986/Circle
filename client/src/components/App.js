@@ -25,7 +25,7 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [showLogin, setShowLogin] = useState(true)
     const [posts, setPosts] = useState([])
-    const [ formErrors, setFormErrors ] = useState([])
+    const [formErrors, setFormErrors] = useState([])
     const [formData, setFormData] = useState(initialData)
     const [newComment, setNewComment] = useState({ description: ''})
     
@@ -52,12 +52,18 @@ function App() {
           fetchAuthorizedUser()
         }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
       fetch('/posts')
-        .then((res)=> res.json())
+        .then((res)=> {
+          if (res.ok) {
+            return res.json()
+          } else {
+            throw new Error("Server Error")
+          } 
+        } )
         .then(res => setPosts(res))
-        .catch(error => console.error(error));
-    },[])
+       // .catch(error => console.error(error));
+    },[currentUser])
 
    
 
@@ -74,9 +80,7 @@ function App() {
         .then((new_post)=> setPosts([...posts, new_post]));
         setFormData(initialData)
         history.push('/feed')
-    }
-
- 
+    } 
 
 
 if (!currentUser) { 
@@ -123,7 +127,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/users/:user'>
-            <OtherUserProfiles />
+            <OtherUserProfiles currentUser={currentUser} />
           </Route>
 
         </Switch>
