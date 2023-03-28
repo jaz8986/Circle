@@ -60,6 +60,43 @@ jane = User.create!(
     private_location: false
 )
 
+max = User.create!(
+    profile_img: "https://img.nbc.com/sites/nbcunbc/files/images/2021/3/22/NewAmsterdam-RyanEggold-bio-1455x1455.jpg",
+    username: "max",
+    password: "12345678",
+    name: "Max Goodwin",
+    pronouns: "he/him",
+    bio: "hello world!",
+    longitude: "-124.5",
+    latitude: "41.5",
+    private_location: false
+)
+
+helen = User.create!(
+    profile_img: "https://static.wikia.nocookie.net/new-amsterdam/images/f/f2/2CastPoster4.jpg/revision/latest?cb=20220112113308",
+    username: "helen",
+    password: "12345678",
+    name: "Helen Sharpe",
+    pronouns: "she/her",
+    bio: "hello world!",
+    longitude: "-124.7",
+    latitude: "41.7",
+    private_location: false
+)
+
+lauren = User.create!(
+    profile_img: "https://tv-fanatic-res.cloudinary.com/iu/s--2HFQqAU5--/f_auto,q_auto/v1537311763/dr-lauren-bloom-new-amsterdam",
+    username: "lauren",
+    password: "12345678",
+    name: "Laurn Bloom",
+    pronouns: "she/her",
+    bio: "hello world!",
+    longitude: "-125",
+    latitude: "41.9",
+    private_location: false
+)
+
+
 puts "users are following other users" 
 Follower.create!(followee: bob, follower: sally)
 Follower.create!(followee: bob, follower: john)
@@ -106,6 +143,30 @@ end
     Post.create!(
         img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
         user_id: bob.id,
+        description: "hello"
+    )
+end
+
+20.times do
+    Post.create!(
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
+        user_id: max.id,
+        description: "hello"
+    )
+end
+
+20.times do
+    Post.create!(
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
+        user_id: helen.id,
+        description: "hello"
+    )
+end
+
+20.times do
+    Post.create!(
+        img: "https://www.palmtreesandpellegrino.com/wp-content/uploads/2019/04/IMG_7078-1440x1920.jpg",
+        user_id: lauren.id,
         description: "hello"
     )
 end

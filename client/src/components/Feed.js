@@ -4,8 +4,8 @@ import Bio from './Bio'
 
 export default function Feed({ currentUser, posts }) {
   
-  const mappedFeed = posts.map((post) => (
-    <Post id={post.id} user={post.user.username} image={post.img} description={post.description} />
+  const mappedFeed = posts?.map((post) => (
+    <Post key={post.id} id={post.id} user={post.user.username} image={post.img} description={post.description} />
   ))
 
   const mappedFollowers = currentUser.followers?.map((follower)=> (
