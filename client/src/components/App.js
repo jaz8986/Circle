@@ -52,6 +52,7 @@ function App() {
           fetchAuthorizedUser()
         }, [])
 
+
     useEffect(() => {
       fetch('/posts')
         .then((res)=> {
@@ -107,7 +108,7 @@ if (!currentUser) {
         <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
         <Switch>
           <Route exact path= "/feed">
-              <Feed currentUser={currentUser} posts={posts}/>
+              <Feed currentUser={currentUser} posts={posts} />
           </Route>
 
           <Route exact path='/posts/new'>
@@ -127,7 +128,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/users/:user'>
-            <OtherUserProfiles currentUser={currentUser} />
+            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} />
           </Route>
 
         </Switch>

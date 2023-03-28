@@ -3,7 +3,7 @@ import React from 'react'
 export default function Bio({currentUser}) {
   return (
     <div>
-        {currentUser.profile_img}
+       <img style={{width: "150px"}} src={currentUser.profile_img} alt='' />
         {currentUser.name}
         {currentUser.pronouns}
         {currentUser.bio}
