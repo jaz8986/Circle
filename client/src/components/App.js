@@ -13,6 +13,7 @@ import SinglePostView from './SinglePostView'
 import Profile from './Profile'
 import LocateMyFriends from './LocateMyFriends'
 import OtherUserProfiles from './OtherUserProfiles'
+import PublicFeed from './PublicFeed'
 
 function App() {
     const initialData = {
@@ -135,6 +136,10 @@ if (!currentUser) {
 
           <Route exact path='/users/:user'>
             <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} />
+          </Route>
+
+          <Route exact path='/posts'>
+            <PublicFeed posts={posts} />
           </Route>
 
         </Switch>

@@ -35,6 +35,12 @@ export default function FollowBtn({setCurrentUser, currentUser, user }) {
                     if (r.ok) {
                         r.json().then((data) => {
                             setFollowed(true)
+                            setCurrentUser({
+                                ...currentUser,
+                                followees: {
+                                    ...currentUser.followees, data
+                                }
+                            })
                         })
                     } else {
                       //  r.json().then((err) => onerror(err.errors))
