@@ -28,6 +28,7 @@ function App() {
     const [formErrors, setFormErrors] = useState([])
     const [formData, setFormData] = useState(initialData)
     const [newComment, setNewComment] = useState({ description: ''})
+    const [errors, setErrors] = useState([])
     
   
     const handleLoginSignup = () => {
@@ -77,10 +78,15 @@ function App() {
               },
         body: JSON.stringify(formData),
             })
-        .then((response) => response.json())
-        .then((new_post)=> setPosts([...posts, new_post]));
+        .then((response) => {
+          if (response.ok) {
+            response.json().then((new_post)=> setPosts([...posts, new_post]));
+            history.push('/feed')
+          } else {
+            response.json().then((errorData) => setErrors(errorData.errors))
+          }
+        })
         setFormData(initialData)
-        history.push('/feed')
     } 
 
 
@@ -112,7 +118,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/posts/new'>
-            <CreateAPost setFormData={setFormData} formData={formData} currentUser={currentUser} handleFormSubmit={handleFormSubmit} />
+            <CreateAPost errors={errors} setFormData={setFormData} formData={formData} currentUser={currentUser} handleFormSubmit={handleFormSubmit} />
           </Route>
 
           <Route path='/posts/:id' >

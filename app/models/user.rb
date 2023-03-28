@@ -13,6 +13,6 @@ class User < ApplicationRecord
     validates :username, uniqueness: true
     validates :password, length: { minimum: 8, maximum: 20 }, on: :create
     validates :bio, length: { maximum: 300 }
-
+    validates :username, :name, :pronouns, presence: true
 
 end

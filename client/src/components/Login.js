@@ -10,6 +10,7 @@ const Login = ( { setCurrentUser, handleLoginSignup }) => {
         username: "",
         password: ""
     });
+    const [errors, setErrors] = useState([])
 
     const handleChange = (e) => {
         setUser({...user, [e.target.name]: e.target.value})
@@ -31,10 +32,9 @@ const Login = ( { setCurrentUser, handleLoginSignup }) => {
                     history.push('/feed')
                 })
             } else {
-                res.json().then(errorObj => alert(errorObj.error))
+                res.json().then(errorObj => setErrors([errorObj.error]))
             }
         })
-        .catch(error => alert(error))
         setUser({
             username: "",
             password: ""
@@ -55,6 +55,13 @@ const Login = ( { setCurrentUser, handleLoginSignup }) => {
                         </div>
 
                         <input style={{margin: "20px"}}  type="submit" value="Login" />
+                        {errors.length > 0 && (
+                            <div style={{ color: "red" }}>
+                            {errors.map((error) => (
+                                <div key={error}>{error}</div>
+                            ))}
+                            </div>
+                        )}
                     </form>
                     <button  onClick={handleLoginSignup}>Sign Up</button>
                     </div>
