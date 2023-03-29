@@ -31,6 +31,7 @@ function App() {
     const [newComment, setNewComment] = useState({ description: ''})
     const [errors, setErrors] = useState([])
     
+    
   
     const handleLoginSignup = () => {
         setShowLogin(currentVal => !currentVal)
@@ -90,6 +91,11 @@ function App() {
         setFormData(initialData)
     } 
 
+    function onFollow(data){
+      currentUser.followees.push(data)
+      setCurrentUser(currentUser)
+    }
+
 
 if (!currentUser) { 
     return(
@@ -135,7 +141,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/users/:user'>
-            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} />
+            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} onFollow={onFollow} />
           </Route>
 
           <Route exact path='/posts'>
