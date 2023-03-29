@@ -47,7 +47,7 @@ const Signup = ({ handleLoginSignup, setCurrentUser, formErrors, setFormErrors }
         };
 
   return (
-<Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' >
+<Grid textAlign='center' style={{ height: '100vh' }} verticalAlign="top" >
   <Grid.Column style={{ maxWidth: 450 }} >
       <form className='ui form'  onSubmit={handleSubmit}>
         <Segment>
@@ -57,7 +57,7 @@ const Signup = ({ handleLoginSignup, setCurrentUser, formErrors, setFormErrors }
           <input  style={{marginTop: "20px"}} type="text" name="name" placeholder='Name' onChange={handleChange} value={newUser.name} required />
           <input  style={{marginTop: "20px"}} type="text" name="pronouns" placeholder='Pronouns' onChange={handleChange} value={newUser.pronouns} required />
           <input  style={{marginTop: "20px"}} type="text" name="bio" placeholder='Bio' onChange={handleChange} value={newUser.bio} required />
-          <input style={{marginTop: "20px"}} className='ui green button large'  type="submit" value="Create New User" />
+          <input style={{marginTop: "20px"}} className='ui purple button large'  type="submit" value="Create New User" />
           {formErrors.length > 0
             ? formErrors.map((err) => (
             <p key={err} style={{ color: "red" }}>

@@ -43,7 +43,7 @@ const Login = ( { setCurrentUser, handleLoginSignup }) => {
     }
 
     return (
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' >
+            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign="top" >
                 <Grid.Column style={{ maxWidth: 350 }}>
                     <div style={{ textAlign: "center"}}>
                         <div style={{ textAlign: "center"}}>
@@ -57,7 +57,7 @@ const Login = ( { setCurrentUser, handleLoginSignup }) => {
                                         <input type="password" onChange={handleChange} value={user.password} name="password" placeholder='Password'/>
                                     </div>
 
-                                    <input className='ui green button large' style={{margin: "20px"}}  type="submit" value="Login" />
+                                    <input className='ui purple button large' style={{margin: "20px"}}  type="submit" value="Login" />
                                     {errors.length > 0 && (
                                         <div style={{ color: "red" }}>
                                         {errors.map((error) => (

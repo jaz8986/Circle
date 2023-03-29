@@ -23,7 +23,7 @@ export default function LocateMyFriends({ setCurrentUser, currentUser }) {
     function shareLocation() {
       navigator.geolocation.getCurrentPosition((position) => {
       setLocation({longitude: position.coords.longitude, latitude: position.coords.latitude});
-
+// does navigator return a promise, i can make my own promise
       fetch('/location', {
         method: "PATCH",
         headers: {

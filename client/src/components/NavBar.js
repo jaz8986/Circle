@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
+import logo from '../images/logo.png'
 
 const NavBar = ( { setCurrentUser, currentUser } ) => {
 
@@ -23,10 +24,10 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
 
     if (!currentUser) {
         return(
-            <div>   
+            <div style={{textAlign: "center"}}>   
 
                 <Link to="/">
-                    <h1 style={{textAlign: "center"}}>Login</h1> 
+                    <img style={{maxHeight: "150px"}} src={logo} alt='' />
                 </Link>
 
             </div>
