@@ -13,6 +13,7 @@ import SinglePostView from './SinglePostView'
 import Profile from './Profile'
 import LocateMyFriends from './LocateMyFriends'
 import OtherUserProfiles from './OtherUserProfiles'
+import PublicFeed from './PublicFeed'
 
 function App() {
     const initialData = {
@@ -29,6 +30,7 @@ function App() {
     const [formData, setFormData] = useState(initialData)
     const [newComment, setNewComment] = useState({ description: ''})
     const [errors, setErrors] = useState([])
+    
     
   
     const handleLoginSignup = () => {
@@ -89,6 +91,11 @@ function App() {
         setFormData(initialData)
     } 
 
+    function onFollow(data){
+      currentUser.followees.push(data)
+      setCurrentUser(currentUser)
+    }
+
 
 if (!currentUser) { 
     return(
@@ -134,7 +141,11 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/users/:user'>
-            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} />
+            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} onFollow={onFollow} />
+          </Route>
+
+          <Route exact path='/posts'>
+            <PublicFeed posts={posts} />
           </Route>
 
         </Switch>

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-export default function FollowBtn({setCurrentUser, currentUser, user }) {
+export default function FollowBtn({ currentUser, user, onFollow }) {
 
     const foundFollow = currentUser && user.followers ? user.followers.find((follow) => follow.id === currentUser.id) : null
 
@@ -35,6 +35,7 @@ export default function FollowBtn({setCurrentUser, currentUser, user }) {
                     if (r.ok) {
                         r.json().then((data) => {
                             setFollowed(true)
+                            onFollow(data)
                         })
                     } else {
                       //  r.json().then((err) => onerror(err.errors))

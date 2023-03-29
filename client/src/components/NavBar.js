@@ -36,7 +36,11 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
     return (
         <nav className='ui menu'>
             <Link to='/feed' >
-                <h4>Feed</h4>
+                <h4>My Feed</h4>
+            </Link>
+
+            <Link to='/posts'>
+                <h4>Public Feed</h4>
             </Link>
 
             <Link to='/posts/new'>

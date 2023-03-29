@@ -8,7 +8,7 @@ class FollowersController < ApplicationController
         followee = User.find params[:followee_id]
         follower = User.find params[:follower_id]
         follow = Follower.create!(followee: followee, follower: follower)
-        render json: follow, status: :created
+        render json: followee, status: :created
     end
 
     def destroy 
