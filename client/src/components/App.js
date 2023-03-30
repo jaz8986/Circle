@@ -83,7 +83,7 @@ function App() {
         .then((response) => {
           if (response.ok) {
             response.json().then((new_post)=> setPosts([new_post, ...posts]));
-            history.push('/feed')
+            history.push('/posts')
           } else {
             response.json().then((errorData) => setErrors(errorData.errors))
           }
