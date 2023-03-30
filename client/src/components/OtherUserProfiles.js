@@ -6,8 +6,8 @@ import CurrUserPosts from './CurrUserPosts'
 import FollowBtn from './FollowBtn'
 
 
-
 export default function OtherUserProfiles({ setCurrentUser, currentUser, onFollow, unfollow }) {
+
 
     const [userData, setUserData] = useState([])
 
@@ -27,11 +27,11 @@ export default function OtherUserProfiles({ setCurrentUser, currentUser, onFollo
 
   return (
     <div>
-    <Bio currentUser={userData} />
-    <FollowBtn setCurrentUser={setCurrentUser} currentUser={currentUser} user={userData} onFollow={onFollow} unfollow={unfollow} />
-    <Card.Group>
-      {mappedProFeed}
-    </Card.Group>
+      <Bio currentUser={userData} />
+      <FollowBtn setCurrentUser={setCurrentUser} currentUser={currentUser} user={userData} onFollow={onFollow} unfollow={unfollow} />
+      <Card.Group>
+        {mappedProFeed}
+      </Card.Group>
     </div>
   )
 }
