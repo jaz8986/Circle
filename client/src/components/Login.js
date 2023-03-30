@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Segment, Grid, Message } from 'semantic-ui-react'
 
 const Login = ( { setCurrentUser, handleLoginSignup }) => {
 
@@ -42,30 +43,37 @@ const Login = ( { setCurrentUser, handleLoginSignup }) => {
     }
 
     return (
-        <div style={{ textAlign: "center"}}>
-                <div style={{ marginLeft: "200px", marginRight: "200px" }}>
-                    <form  style={{textAlign:'center'}} onSubmit={handleSubmit}>
+            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign="top" >
+                <Grid.Column style={{ maxWidth: 350 }}>
+                    <div style={{ textAlign: "center"}}>
+                        <div style={{ textAlign: "center"}}>
+                            <form className='ui form'  style={{textAlign:'center'}} onSubmit={handleSubmit}>
+                                <Segment>
+                                    <div style={{margin: "20px"}} >
+                                        <input type="text" onChange={handleChange} value={user.username} name="username" placeholder='Username' />
+                                    </div>
 
-                        <div style={{margin: "20px"}} >
-                            <input type="text" onChange={handleChange} value={user.username} name="username" placeholder='Username' />
-                        </div>
+                                    <div style={{margin: "20px"}} >
+                                        <input type="password" onChange={handleChange} value={user.password} name="password" placeholder='Password'/>
+                                    </div>
 
-                        <div style={{margin: "20px"}} >
-                            <input type="password" onChange={handleChange} value={user.password} name="password" placeholder='Password'/>
-                        </div>
-
-                        <input style={{margin: "20px"}}  type="submit" value="Login" />
-                        {errors.length > 0 && (
-                            <div style={{ color: "red" }}>
-                            {errors.map((error) => (
-                                <div key={error}>{error}</div>
-                            ))}
-                            </div>
-                        )}
-                    </form>
-                    <button  onClick={handleLoginSignup}>Sign Up</button>
-                    </div>
-        </div>            
+                                    <input className='ui purple button large' style={{margin: "20px"}}  type="submit" value="Login" />
+                                    {errors.length > 0 && (
+                                        <div style={{ color: "red" }}>
+                                        {errors.map((error) => (
+                                            <div key={error}>{error}</div>
+                                        ))}
+                                        </div>
+                                    )}
+                                </Segment>
+                            </form>
+                    <Message onClick={handleLoginSignup} attached='bottom' warning>
+                        Don't have an account? Sign Up here instead.
+                    </Message> 
+                </div>
+            </div>
+        </Grid.Column>
+    </Grid>            
     );
 }
 
