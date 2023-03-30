@@ -25,7 +25,7 @@ const NavBar = ( { setCurrentUser, currentUser } ) => {
 
     if (!currentUser) {
         return(
-            <div style={{textAlign: "center"}}>   
+            <div style={{ backgroundColor: "#EAD9EB" , textAlign: "center"}}>   
 
                 <Link to="/">
                     <img style={{maxHeight: "150px"}} src={logo} alt='' />

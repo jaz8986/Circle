@@ -1,6 +1,6 @@
 import React from 'react'
 import PublicFeedPosts from './PublicFeedPosts'
-import { Grid, Card } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 
 export default function PublicFeed({ posts }) {
 
