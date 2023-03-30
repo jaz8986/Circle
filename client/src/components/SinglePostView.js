@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
-import { Card, Image, Comment, Header } from 'semantic-ui-react'
+import { Card, Image, Comment, Header, Segment, Grid } from 'semantic-ui-react'
 import CommentComp from './CommentComp'
 
 export default function SinglePostView({setNewComment, newComment}) {
@@ -61,31 +61,36 @@ export default function SinglePostView({setNewComment, newComment}) {
 
 
     return (
-        <>
-        <Card>
-            <Card.Content>
-                <Card.Header>@{post.user.username}</Card.Header>
-            </Card.Content>
-                    <Image src={post.img} wrapped ui={true} />
-            <Card.Content> 
-                <Card.Description>
-                {post.description}
-                </Card.Description>
-            </Card.Content>
-        </Card>
-
-        <Comment.Group>
-            <Header as='h3' dividing>
-            Comments
-            </Header>
-            {commentsMapped}
-            <form class='ui form' onSubmit={handleCommentSubmit}>
-                <div class="ui input" >
-                    <input type='text' placeholder='Comment' name="description" value={description} onChange={handleFormChange} />
-                </div>
-                <button type='submit' class="ui button" >Reply To Post</button>
-            </form>
-        </Comment.Group>
-        </>
+        <Segment>
+            <Grid columns={2} relaxed='very'>
+                <Grid.Column>
+                    <Card centered>
+                        <Card.Content>
+                            <Card.Header>@{post.user.username}</Card.Header>
+                        </Card.Content>
+                                <Image src={post.img} wrapped ui={true} />
+                        <Card.Content> 
+                            <Card.Description>
+                            {post.description}
+                            </Card.Description>
+                        </Card.Content>
+                    </Card>
+                </Grid.Column>
+                <Grid.Column>
+                    <Comment.Group>
+                        <Header as='h3' dividing>
+                            Comments
+                        </Header>
+                        {commentsMapped}
+                        <form class='ui form' onSubmit={handleCommentSubmit}>
+                            <div class="ui input" >
+                                <input type='text' placeholder='Comment' name="description" value={description} onChange={handleFormChange} />
+                            </div>
+                            <button type='submit' class="ui button" >Reply To Post</button>
+                        </form>
+                    </Comment.Group>
+                </Grid.Column>  
+        </Grid>
+        </Segment>
   )
 }
