@@ -106,6 +106,7 @@ function App() {
         followees: currentUser.followees.filter((followee) => followee.id !== id)
       }
       setCurrentUser(updatedUser)
+    }
 
 
 
