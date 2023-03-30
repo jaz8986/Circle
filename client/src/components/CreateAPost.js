@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Grid, Image, Placeholder, Segment, Divider } from 'semantic-ui-react'
 
 export default function CreateAPost({ setFormData, formData, currentUser, handleFormSubmit, errors}) {
 
@@ -11,34 +11,46 @@ export default function CreateAPost({ setFormData, formData, currentUser, handle
     }
 
   return (
-    <div>
-       
-            <Card>
+    <div style={{margin: '20px'}} >
+    <Segment>
+    <Grid columns={2} relaxed='very' >
+        <Grid.Column>
+            <Card centered>
                 <Card.Content>
                     <Card.Header>@{currentUser.username}</Card.Header>
                 </Card.Content>
-                    <Image src={img} wrapped ui={false} />
+                    {img ? <Image src={img} wrapped ui='true' /> : 
+                    <Placeholder style={{ height: 300, width: 290 }}>
+                        <Placeholder.Image />
+                    </Placeholder>
+                        }
                 <Card.Content>
                     <Card.Description>
                         {description}
                     </Card.Description>
                 </Card.Content>
             </Card>
-        <form class='ui form' onSubmit={handleFormSubmit}>
-            <label>Image Url</label>
-                <input type="text" onChange={handleFormChange} value={img} name='img' placeholder=''/>
+        </Grid.Column>
+        <Grid.Column  >
+            <form class='ui form' onSubmit={handleFormSubmit}>
+                <label>Image Url</label>
+                    <input type="text" onChange={handleFormChange} value={img} name='img' placeholder=''/>
 
-            <label>Description</label>
-                <input type="text"  onChange={handleFormChange} value={description} name='description' placeholder=''/>
-            <button type='submit' className='ui button' >Post</button>
-            {errors.length > 0 && (
-                <div style={{ color: "red" }}>
-                {errors.map((error) => (
-                    <div key={error}>{error}</div>
-                ))}
-                </div>
-            )}
-        </form>
+                <label>Description</label>
+                    <input type="text"  onChange={handleFormChange} value={description} name='description' placeholder=''/>
+                <button type='submit' className='ui button' style={{margin: "10px"}} >Post</button>
+                {errors.length > 0 && (
+                    <div style={{ color: "red" }}>
+                    {errors.map((error) => (
+                        <div key={error}>{error}</div>
+                    ))}
+                    </div>
+                )}
+            </form>
+        </Grid.Column>
+    </Grid>
+    <Divider vertical></Divider>
+    </Segment>
     </div>
   )
 }

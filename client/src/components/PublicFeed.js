@@ -1,5 +1,6 @@
 import React from 'react'
 import PublicFeedPosts from './PublicFeedPosts'
+import { Grid, Card } from 'semantic-ui-react'
 
 export default function PublicFeed({ posts }) {
 
@@ -8,8 +9,10 @@ export default function PublicFeed({ posts }) {
     ))
 
   return (
-    <>
-        {publicFeed}
-    </>
+    <div style={{margin: "10px"}}>
+        <Card.Group itemsPerRow={6} >
+            {publicFeed}
+        </Card.Group>
+    </div>
   )
 }
