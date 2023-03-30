@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { MapProvider, Marker, Map } from 'react-map-gl'
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Image, Segment } from 'semantic-ui-react';
 
 
 export default function LocateMyFriends({ setCurrentUser, currentUser }) {
@@ -54,7 +54,7 @@ export default function LocateMyFriends({ setCurrentUser, currentUser }) {
       }
     }
     
-    const markers = friends?.map((f) => <Marker longitude={parseInt(f.longitude)} latitude={parseInt(f.latitude)}><img style={{width: "150px"}} src={f.profile_img} alt='' /></Marker> )
+    const markers = friends?.map((f) => <Marker longitude={parseInt(f.longitude)} latitude={parseInt(f.latitude)}><Image  src={f.profile_img} alt='' avatar /></Marker> )
    
     const menuItems = friends.map((f) => (<div onClick={() => changeViewState(f.id)} className='item'>@{f.username}</div>))
 
@@ -76,7 +76,7 @@ export default function LocateMyFriends({ setCurrentUser, currentUser }) {
             mapStyle="mapbox://styles/mapbox/streets-v9"
             mapboxAccessToken={MAPBOX_TOKEN} >
             {markers}
-            <Marker latitude={currentUser.latitude} longitude={currentUser.longitude}><img alt='' src='https://i.fbcd.co/products/original/9847a67d09a39d0ef02f4cacc70490cdbe8cae2a1f7c9a2e5bf23e9a126137ec.jpg' style={{width: "100px"}} /></Marker>
+            <Marker latitude={currentUser.latitude} longitude={currentUser.longitude}><Image alt='' src={currentUser.profile_img} avatar/></Marker>
           </Map>
           <button style={{margin: "20px"}} className="ui green button" onClick={shareLocation}>Update Your Location</button>
         </MapProvider>
