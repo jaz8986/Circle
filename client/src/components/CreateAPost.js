@@ -17,7 +17,10 @@ export default function CreateAPost({ setFormData, formData, currentUser, handle
         <Grid.Column>
             <Card centered>
                 <Card.Content>
-                    <Card.Header>@{currentUser.username}</Card.Header>
+                    <Card.Header>
+                        <Image src={currentUser.profile_img} avatar/>
+                        {currentUser.username}
+                    </Card.Header>
                 </Card.Content>
                     {img ? <Image src={img} wrapped ui='true' /> : 
                     <Placeholder style={{ height: 300, width: 290 }}>

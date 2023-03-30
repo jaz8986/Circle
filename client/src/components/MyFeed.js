@@ -33,9 +33,10 @@ export default function MyFeed({ currentUser, posts }) {
   ))
 
 
-  if (!posts || !currentUser) return <div>loading...</div>
+  if (!posts || !currentUser) return <div style={{marginTop: "20px"}} >loading...</div>
   
   return (
+    <div>
     <Grid>
       <Grid.Column width={1} ></Grid.Column >
       <Grid.Column width={4}>
@@ -63,5 +64,6 @@ export default function MyFeed({ currentUser, posts }) {
         </Card.Group>
       </Grid.Column>
     </Grid>
+    </div>
   )
 }

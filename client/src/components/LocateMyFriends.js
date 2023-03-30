@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { MapProvider, Marker, Map } from 'react-map-gl'
 
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { Grid, Segment } from 'semantic-ui-react';
 
 
 export default function LocateMyFriends({ setCurrentUser, currentUser }) {
@@ -58,23 +59,30 @@ export default function LocateMyFriends({ setCurrentUser, currentUser }) {
     const menuItems = friends.map((f) => (<div onClick={() => changeViewState(f.id)} className='item'>@{f.username}</div>))
 
   return (
-    <div>
-      <div className='ui vertical menu'>
-        <div onClick={() => changeViewState(currentUser.id)} className='item'>@Me</div>
-        {friends ? menuItems : null}
-      </div>
-      <MapProvider>
-        <Map
-          {...viewState}
-          onMove={evt => setViewState(evt.viewState)}
-          style={{width: 550, height: 450}}
-          mapStyle="mapbox://styles/mapbox/streets-v9"
-          mapboxAccessToken={MAPBOX_TOKEN} >
-          {markers}
-          <Marker latitude={currentUser.latitude} longitude={currentUser.longitude}><img alt='' src='https://i.fbcd.co/products/original/9847a67d09a39d0ef02f4cacc70490cdbe8cae2a1f7c9a2e5bf23e9a126137ec.jpg' style={{width: "100px"}} /></Marker>
-        </Map>
-        <button onClick={shareLocation}>Share Your Location With Your Friends?</button>
-      </MapProvider>
-    </div>
+    <Segment>
+      <Grid columns={2} relaxed='very'>
+        <Grid.Column>
+        <div className='ui vertical menu'>
+          <div onClick={() => changeViewState(currentUser.id)} className='item'>@Me</div>
+          {friends ? menuItems : null}
+        </div>
+        </Grid.Column>
+        <Grid.Column>
+        <MapProvider>
+          <Map
+            {...viewState}
+            onMove={evt => setViewState(evt.viewState)}
+            style={{width: 550, height: 450}}
+            mapStyle="mapbox://styles/mapbox/streets-v9"
+            mapboxAccessToken={MAPBOX_TOKEN} >
+            {markers}
+            <Marker latitude={currentUser.latitude} longitude={currentUser.longitude}><img alt='' src='https://i.fbcd.co/products/original/9847a67d09a39d0ef02f4cacc70490cdbe8cae2a1f7c9a2e5bf23e9a126137ec.jpg' style={{width: "100px"}} /></Marker>
+          </Map>
+          <button style={{margin: "20px"}} className="ui green button" onClick={shareLocation}>Update Your Location</button>
+        </MapProvider>
+        </Grid.Column>
+        </Grid>
+      
+    </Segment>
   )
 }

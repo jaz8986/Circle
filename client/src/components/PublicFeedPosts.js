@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-export default function PublicFeedPosts({user, image, description, id}) {
+export default function PublicFeedPosts({user, image, description, id, profile}) {
 
     const path = `/posts/${id}`
     const userPath = `/users/${user}`
@@ -11,7 +11,10 @@ export default function PublicFeedPosts({user, image, description, id}) {
     <Card>
       <Card.Content>
         <Link to={userPath}>
-          <Card.Header>@{user}</Card.Header>
+          <Card.Header>
+          <Image src={profile} avatar/>
+            {user}
+          </Card.Header>
         </Link>
       </Card.Content>
         <Link to={path} >
