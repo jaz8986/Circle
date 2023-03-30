@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-export default function FollowBtn({setCurrentUser, currentUser, user, onFollow }) {
+export default function FollowBtn({setCurrentUser, currentUser, user, onFollow, unfollow }) {
 
     const foundFollow = currentUser && user.followers ? user.followers.find((follow) => follow.id === currentUser.id) : null
 
@@ -22,6 +22,7 @@ export default function FollowBtn({setCurrentUser, currentUser, user, onFollow }
             })
                 .then((r) => {
                     setFollowed(false)
+                    unfollow(user.id)
                 })
         ) : (
             fetch("/followers", {

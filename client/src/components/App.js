@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 
 import Login from './Login'
 import Signup from './Signup'
-import Feed from './Feed'
+import MyFeed from './MyFeed'
 import NavBar from './NavBar'
 import CreateAPost from './CreateAPost'
 import SinglePostView from './SinglePostView'
@@ -81,7 +81,7 @@ function App() {
             })
         .then((response) => {
           if (response.ok) {
-            response.json().then((new_post)=> setPosts([...posts, new_post]));
+            response.json().then((new_post)=> setPosts([new_post, ...posts]));
             history.push('/feed')
           } else {
             response.json().then((errorData) => setErrors(errorData.errors))
@@ -90,12 +90,21 @@ function App() {
         setFormData(initialData)
     } 
 
-    function onFollow(data){
-      currentUser.followees.push({...data})
-      setCurrentUser(currentUser)
+    function onFollow(data) {
+      const updatedUser = {
+        ...currentUser, 
+        followees: [...currentUser.followees, data]
+      }
+      setCurrentUser(updatedUser)
     }
 
-  
+    function unfollow (id) {
+      const updatedUser = {
+        ...currentUser,
+        followees: currentUser.followees.filter((followee) => followee.id !== id)
+      }
+      setCurrentUser(updatedUser)
+    }
 
 
 if (!currentUser) { 
@@ -122,7 +131,7 @@ if (!currentUser) {
         <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
         <Switch>
           <Route exact path= "/feed">
-              <Feed currentUser={currentUser} posts={posts} />
+              <MyFeed currentUser={currentUser} posts={posts} />
           </Route>
 
           <Route exact path='/posts/new'>
@@ -142,7 +151,7 @@ if (!currentUser) {
           </Route>
 
           <Route exact path='/users/:user'>
-            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} onFollow={onFollow} />
+            <OtherUserProfiles setCurrentUser={setCurrentUser} currentUser={currentUser} onFollow={onFollow} unfollow={unfollow} />
           </Route>
 
           <Route exact path='/posts'>
